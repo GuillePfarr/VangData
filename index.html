@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greenhouse Vanguard data analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    canvas {
+      max-width: 600px;
+      max-height: 400px;
+    }
+  </style>
 </head>
 
 <body>
@@ -80,32 +87,32 @@
             const labels = temperatures.map((_, index) => `Sample ${index + 1}`);
             const data = {
                 labels: labels,
-        datasets: [
-          {
-            label: 'Temperature (°C)',
-            data: temperatures,
-            fill: false,
-            borderColor: 'rgba(75, 192, 192, 1)',
-            tension: 0.1
-          }
-        ]
-      };
+                datasets: [
+                    {
+                        label: 'Temperature (°C)',
+                        data: temperatures,
+                        fill: false,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        tension: 0.1
+                    }
+                ]
+            };
 
-      new Chart(temperatureChartCanvas, {
-        type: 'line',
-        data: data,
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              display: false
-            }
-          }
+            new Chart(temperatureChartCanvas, {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+
         }
-      });
-
-     
-            }
 
     </script>
 </body>
