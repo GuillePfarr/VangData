@@ -20,7 +20,28 @@
       .catch(error => {
         console.error('Error reading the file:', error);
       });
-      
+
+      function processData(data) {
+      const lines = data.trim().split('\n');
+      let temperatures = [];
+      let humidities = [];
+
+      lines.forEach(line => {
+        if (line.includes('ºC')) {
+          const temperature = parseFloat(line.split(':')[1].trim().replace('°C', ''));
+          temperatures.push(temperature);
+        } else if (line.includes('%')) {
+          const humidity = parseFloat(line.split(':')[1].trim().replace('%', ''));
+          humidities.push(humidity);
+        }
+      });
+
+      displayTemperatureStats(temperatures);
+      displayHumidityStats(humidities);
+      plotTemperatureChart(temperatures);
+      plotHumidityChart(humidities);
+    }
+
     </script>
 </body>
 </html>
