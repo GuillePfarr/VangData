@@ -76,8 +76,11 @@
         }
 
         function plotTemperatureChart(temperatures) {
-      
-    }
+            const temperatureChartCanvas = document.getElementById('temperatureChart').getContext('2d');
+            const labels = temperatures.map((_, index) => `Sample ${index + 1}`);
+            const data = {
+
+            }
 
     </script>
 </body>
