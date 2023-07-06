@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greenhouse Vanguard data analysis</title>
 </head>
+
 <body>
     <h1>Data Results</h1>
-  <h2>Temperature Statistics:</h2>
-  <p id="temperatureStats">Loading...</p>
-  <canvas id="temperatureChart"></canvas>
-  <h2>Humidity Statistics:</h2>
-  <p id="humidityStats">Loading...</p>
-  <canvas id="humidityChart"></canvas>
+    <h2>Temperature Statistics:</h2>
+    <p id="temperatureStats">Loading...</p>
+    <canvas id="temperatureChart"></canvas>
+    <h2>Humidity Statistics:</h2>
+    <p id="humidityStats">Loading...</p>
+    <canvas id="humidityChart"></canvas>
     <script>
-         fetch('data.txt')
-      .then(response => response.text())
-      .then(data => processData(data))
-      .catch(error => {
-        console.error('Error reading the file:', error);
-      });
+        fetch('data.txt')
+            .then(response => response.text())
+            .then(data => processData(data))
+            .catch(error => {
+                console.error('Error reading the file:', error);
+            });
 
-      function processData(data) {
-      const lines = data.trim().split('\n');
-      let temperatures = [];
-      let humidities = [];
+        function processData(data) {
+            const lines = data.trim().split('\n');
+            let temperatures = [];
+            let humidities = [];
 
-      lines.forEach(line => {
-        if (line.includes('ºC')) {
-          const temperature = parseFloat(line.split(':')[1].trim().replace('°C', ''));
-          temperatures.push(temperature);
-        } else if (line.includes('%')) {
-          const humidity = parseFloat(line.split(':')[1].trim().replace('%', ''));
-          humidities.push(humidity);
+            lines.forEach(line => {
+                if (line.includes('ºC')) {
+                    const temperature = parseFloat(line.split(':')[1].trim().replace('°C', ''));
+                    temperatures.push(temperature);
+                } else if (line.includes('%')) {
+                    const humidity = parseFloat(line.split(':')[1].trim().replace('%', ''));
+                    humidities.push(humidity);
+                }
+            });
+
+            displayTemperatureStats(temperatures);
+            displayHumidityStats(humidities);
+            plotTemperatureChart(temperatures);
+            plotHumidityChart(humidities);
         }
-      });
 
-      displayTemperatureStats(temperatures);
-      displayHumidityStats(humidities);
-      plotTemperatureChart(temperatures);
-      plotHumidityChart(humidities);
-    }
+        function displayTemperatureStats(temperatures) {
+            const maxTemp = Math.max(...temperatures);
+            const minTemp = Math.min(...temperatures);
+            const avgTemp = calculateAverage(temperatures);
 
-    function displayTemperatureStats(temperatures) {
-      
-    }
+
+        }
 
     </script>
 </body>
+
 </html>
