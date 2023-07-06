@@ -79,7 +79,19 @@
             const temperatureChartCanvas = document.getElementById('temperatureChart').getContext('2d');
             const labels = temperatures.map((_, index) => `Sample ${index + 1}`);
             const data = {
+                labels: labels,
+        datasets: [
+          {
+            label: 'Temperature (°C)',
+            data: temperatures,
+            fill: false,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            tension: 0.1
+          }
+        ]
+      };
 
+     
             }
 
     </script>
