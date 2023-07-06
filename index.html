@@ -58,8 +58,18 @@
         }
 
         function displayHumidityStats(humidities) {
-      
-    }
+            const maxHumidity = Math.max(...humidities);
+            const minHumidity = Math.min(...humidities);
+            const avgHumidity = calculateAverage(humidities);
+
+            const humidityStatsElement = document.getElementById('humidityStats');
+            humidityStatsElement.innerHTML = `
+        Maximum Humidity: ${maxHumidity.toFixed(2)}%<br>
+        Minimum Humidity: ${minHumidity.toFixed(2)}%<br>
+        Average Humidity: ${avgHumidity.toFixed(2)}%
+      `;
+
+        }
 
     </script>
 </body>
