@@ -68,7 +68,11 @@
         Minimum Humidity: ${minHumidity.toFixed(2)}%<br>
         Average Humidity: ${avgHumidity.toFixed(2)}%
       `;
+        }
 
+        function calculateAverage(data) {
+            const sum = data.reduce((acc, value) => acc + value, 0);
+            return sum / data.length;
         }
 
     </script>
