@@ -49,7 +49,12 @@
             const minTemp = Math.min(...temperatures);
             const avgTemp = calculateAverage(temperatures);
 
-
+            const temperatureStatsElement = document.getElementById('temperatureStats');
+            temperatureStatsElement.innerHTML = `
+        Maximum Temperature: ${maxTemp.toFixed(2)}°C<br>
+        Minimum Temperature: ${minTemp.toFixed(2)}°C<br>
+        Average Temperature: ${avgTemp.toFixed(2)}°C
+      `;
         }
 
     </script>
