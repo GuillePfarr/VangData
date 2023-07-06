@@ -115,7 +115,22 @@
         }
 
         function plotHumidityChart(humidities) {
-      
+            const humidityChartCanvas = document.getElementById('humidityChart').getContext('2d');
+      const labels = humidities.map((_, index) => `Sample ${index + 1}`);
+      const data = {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Humidity (%)',
+            data: humidities,
+            fill: false,
+            borderColor: 'rgba(192, 75, 192, 1)',
+            tension: 0.1
+          }
+        ]
+      };
+
+     
     }
 
     </script>
